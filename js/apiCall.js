@@ -46,10 +46,10 @@ fetch('https://api.spacexdata.com/v3/launches/next')
               
                 // 'Replace added to force the HTML to use none-breaking hyphens.  Before this they'd wrap in an ugly way
                 cell2.innerHTML = '<p>' + timeArray[0].replace(/-/g,'&#8209;') + "</p>";
-                cell3.innerHTML = "<p>" + data[i].mission_name + "</p>";
+                cell3.innerHTML = '<p>' + data[i].mission_name + "</p>";
                 if (data[i].details != null) {
                   // If there are details on the flight show them below
-                  cell3.innerHTML += '<p>' + data[i].details + "</p>";
+                  cell3.innerHTML += '<p class="subtext">' + data[i].details + "</p>";
                 }
                 cell4.innerHTML = "<p>" + data[i].rocket.rocket_name + "</p>";
             }
