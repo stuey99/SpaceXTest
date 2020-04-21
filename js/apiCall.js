@@ -32,16 +32,28 @@ fetch('https://api.spacexdata.com/v3/launches/next')
                 var cell3 = row.insertCell(2);
                 var cell4 = row.insertCell(3);
 
+                // If the nextFlightNumber matches the current flight number we know
+                // that this is the next flight.  
+                // A class is added to the row which will highlight it
+                if (nextFlightNumber == data[i].flight_number) {
+                  row.className = 'next_flight';
+                }
+
                 // Display a better time and date.
                 var timeArray = data[i].launch_date_utc.split("T");
 
                 cell1.innerHTML = '<p>' + data[i].flight_number + "</p>";
-                
+              
                 // 'Replace added to force the HTML to use none-breaking hyphens.  Before this they'd wrap in an ugly way
                 cell2.innerHTML = '<p>' + timeArray[0].replace(/-/g,'&#8209;') + "</p>";
                 cell3.innerHTML = "<p>" + data[i].mission_name + "</p>";
+                if (data[i].details != null) {
+                  // If there are details on the flight show them below
+                  cell3.innerHTML += '<p>' + data[i].details + "</p>";
+                }
                 cell4.innerHTML = "<p>" + data[i].rocket.rocket_name + "</p>";
             }
 
         });
 });
+
