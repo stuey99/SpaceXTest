@@ -16,8 +16,6 @@ fetch('https://api.spacexdata.com/v3/launches/next')
             return response.json();
         })
         .then((data) => {
-            // To remove - just to ensure correct data is being retrieved
-            console.log(data);
 
             var i;
             // Get Table object from HTML page
